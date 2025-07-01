@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GenerateReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/cv" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:sd2="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:uc="clr-namespace:UiPath.CV;assembly=UiPath.CV" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GenerateReport" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="OutputSheetPath" Type="InArgument(x:String)" />
   </x:Members>
@@ -126,7 +126,7 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GenerateReport" sap:VirtualizedContainerService.HintSize="766,3334" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GenerateReport" sap:VirtualizedContainerService.HintSize="728.6666666666666,2781.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="TransactionItems" />
     </Sequence.Variables>
@@ -135,12 +135,12 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="584.6666666666666,3311.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="584.6666666666666,2758.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Default="1" Name="Counter" />
-        <Variable x:TypeArguments="sd2:DataTable" Name="DT" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT" />
         <Variable x:TypeArguments="x:String" Name="Str_out" />
-        <Variable x:TypeArguments="sd2:DataRow" Name="DR" />
+        <Variable x:TypeArguments="sd:DataRow" Name="DR" />
         <Variable x:TypeArguments="x:String" Name="OutputFilePath" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
@@ -148,68 +148,6 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:GetOCRText Text="{x:Null}" WordsInfo="{x:Null}" DisplayName="Get OCR Text" sap:VirtualizedContainerService.HintSize="550.6666666666666,184.66666666666666" sap2010:WorkflowViewState.IdRef="GetOCRText_1">
-        <ui:GetOCRText.OCREngine>
-          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-            <ActivityFunc.Argument>
-              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-            </ActivityFunc.Argument>
-            <p:UiPathDocumentOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" ExtractWords="True" sap:VirtualizedContainerService.HintSize="300,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000" />
-          </ActivityFunc>
-        </ui:GetOCRText.OCREngine>
-        <ui:GetOCRText.Target>
-          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="06b60a18-722c-4c19-9e54-6dd753fb0ca5">
-            <ui:Target.TimeoutMS>
-              <InArgument x:TypeArguments="x:Int32" />
-            </ui:Target.TimeoutMS>
-            <ui:Target.WaitForReady>
-              <InArgument x:TypeArguments="ui:WaitForReady" />
-            </ui:Target.WaitForReady>
-          </ui:Target>
-        </ui:GetOCRText.Target>
-      </ui:GetOCRText>
-      <p1:CVScope ContinueOnError="{x:Null}" DelayBefore="{x:Null}" ScopeId="{x:Null}" ScrollOffset="{x:Null}" Server="{x:Null}" CvMethod="ElementDetection, OCR" DesignTimeCacheId="90d31ce8-5824-44dd-9706-51d80fba0dd7" DisplayName="CV Screen Scope" sap:VirtualizedContainerService.HintSize="550.6666666666666,368" sap2010:WorkflowViewState.IdRef="CVScope_1" SendOnPremData="False" Version="V6">
-        <p1:CVScope.Body>
-          <ActivityAction x:TypeArguments="x:Object">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="x:Object" Name="CVSessionData" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_7">
-              <p1:CvGetTextWithDescriptor DelayScreenshotAfterScroll="{x:Null}" DesignTimeScaleFactor="{x:Null}" ScrollOffset="{x:Null}" DisplayName="CV Get Text" sap:VirtualizedContainerService.HintSize="400,178.66666666666666" sap2010:WorkflowViewState.IdRef="CvGetTextWithDescriptor_1" NumberOfScrolls="2" RefreshBefore="True" ScrollDirection="Down" Version="V6" />
-            </Sequence>
-          </ActivityAction>
-        </p1:CVScope.Body>
-        <p1:CVScope.DesignTimeCache>
-          <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" />
-        </p1:CVScope.DesignTimeCache>
-        <p1:CVScope.DesignTimeCacheContainer>
-          <uc:CvCacheContainer>
-            <uc:CvCacheContainer.Caches>
-              <scg:List x:TypeArguments="uc:CVCache" Capacity="1">
-                <uc:CVCache CvUiElements="{x:Null}" OcrTexts="{x:Null}" DataSent="False" DisplayName="1" Id="90d31ce8-5824-44dd-9706-51d80fba0dd7" />
-              </scg:List>
-            </uc:CvCacheContainer.Caches>
-          </uc:CvCacheContainer>
-        </p1:CVScope.DesignTimeCacheContainer>
-        <p1:CVScope.OCREngine>
-          <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-            <ActivityFunc.Argument>
-              <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-            </ActivityFunc.Argument>
-            <p:UiPathScreenOCR ApiKey="{x:Null}" Endpoint="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" UseAccents="{x:Null}" UseLocalServer="{x:Null}" ComputeSkewAngle="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="400,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathScreenOCR_1" Image="[Image]" Language="en" NoopExecution="False" Profile="Screen" Scale="1" Timeout="100000" />
-          </ActivityFunc>
-        </p1:CVScope.OCREngine>
-        <p1:CVScope.Target>
-          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="fbe310c2-ea8d-495f-bb5b-885a2c8ae07c" WaitForReady="INTERACTIVE">
-            <ui:Target.TimeoutMS>
-              <InArgument x:TypeArguments="x:Int32" />
-            </ui:Target.TimeoutMS>
-          </ui:Target>
-        </p1:CVScope.Target>
-        <p1:CVScope.UseLocalServer>
-          <InArgument x:TypeArguments="x:Boolean" />
-        </p1:CVScope.UseLocalServer>
-      </p1:CVScope>
       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="550.6666666666666,118.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Generate reports started&quot;]" />
       <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[TransactionItems.Count = 100]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="550.6666666666666,476.6666666666667" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
         <ui:InterruptibleDoWhile.Body>
@@ -276,10 +214,10 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Assign sap:VirtualizedContainerService.HintSize="478.6666666666667,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
                       <Assign.To>
-                        <OutArgument x:TypeArguments="sd2:DataRow">[DR]</OutArgument>
+                        <OutArgument x:TypeArguments="sd:DataRow">[DR]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="sd2:DataRow">[DT.NewRow]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataRow">[DT.NewRow]</InArgument>
                       </Assign.Value>
                     </Assign>
                     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478.6666666666667,394.6666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
